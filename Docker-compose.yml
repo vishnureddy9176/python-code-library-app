@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  frontend:
+    build: .
+    container_name: frontend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - auth_service
+      - book_service
+      - borrow_service
+
+  auth_service:
+    build: ./auth_service
+    container_name: auth_service
+    ports:
+      - "5001:5001"
+
+  book_service:
+    build: ./book_service
+    container_name: book_service
+    ports:
+      - "5002:5002"
+
+  borrow_service:
+    build: ./borrow_service
+    container_name: borrow_service
+    ports:
+      - "5003:5003"
